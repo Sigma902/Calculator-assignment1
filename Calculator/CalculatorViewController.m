@@ -32,7 +32,6 @@
     return _brain;
 }
 
-
 - (IBAction)digitPressed:(UIButton*)sender 
 {
     NSString *digit = [sender currentTitle];
