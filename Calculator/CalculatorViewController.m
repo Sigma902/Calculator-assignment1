@@ -73,7 +73,6 @@
     }
     self.userIsInTheMiddleOfEnteringANumber = NO;
     self.tape.text = [self.tape.text stringByAppendingString:@" "];
-    
 }
 
 - (IBAction)operationPressed:(UIButton *)sender {
@@ -82,7 +81,7 @@
     self.display.text = [NSString stringWithFormat:@"%g", result];
     self.tape.text = [self.tape.text stringByAppendingString:sender.currentTitle];
     if (!self.userIsInTheMiddleOfEnteringANumber) self.tape.text = [self.tape.text stringByAppendingString:@" = "];
-}
+   }
 
 - (IBAction)clearPressed:(UIButton *)sender {
     [self.brain clear];

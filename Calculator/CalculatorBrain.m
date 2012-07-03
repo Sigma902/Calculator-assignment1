@@ -42,9 +42,9 @@
 - (double)performOperation:(NSString *)operation {
     double result = 0;
     // calculate result
-    if ([self.operandStack count] < 2) {
-        [self pushOperand:result];
-    }
+//    if ([self.operandStack count] < 2) {
+//        [self pushOperand:result];
+//    }
     if ([operation isEqualToString:@"+"]) {
         result = [self popOperand] + [self popOperand];
     } else if ([@"*" isEqualToString:operation]) {
@@ -54,7 +54,12 @@
         result = [self popOperand] - subtrahend;
     } else if ([@"/" isEqualToString:operation]) {
         double divisor = [self popOperand];
-        result = [self popOperand] / divisor;
+        if (divisor) {
+            result = [self popOperand] / divisor;
+        } else {
+            result = 0;
+        }
+        
     } else if ([@"sin" isEqualToString:operation]) {
         result = sin([self popOperand]);
     } else if ([@"cos" isEqualToString:operation]) {
@@ -62,7 +67,7 @@
     } else if ([@"sqrt" isEqualToString:operation]) {
         result = sqrt([self popOperand]);
     } else if ([@"π" isEqualToString:operation]) {
-        result = 22.000/7.000;
+        result = M_PI;
     }
     
     [self pushOperand:result];
